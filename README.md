@@ -5,7 +5,7 @@ El objetivo de esta sesion es realizar una simulación de un radar usando para e
 
 Inicialmente deben bajar todos los archivos .py en su home. El proyecto cuenta con varios archivos  **python**, que corresponden a las diversas clases utilizadas en la simulación. Las clases son: radar, generador de señal, receptor de señal, medio y blanco.
 
-Un radar es un equipo genera y transmite señales hacia un medio donde pueden o no existir blancos. En caso de que la señal encuentre en su camino un blanco, éste puede reflejar la misma hacia el radar. La señal es recepcionada en el equipo para luego ser procesada por el detector. La clase detección determina si existe un blanco o no.
+Un radar es un equipo que genera y transmite señales hacia un medio donde pueden o no existir blancos. En caso de que la señal encuentre en su camino un blanco, éste puede reflejar la misma hacia el radar. La señal es recepcionada en el equipo para luego ser procesada por el detector. La clase detección determina si existe un blanco o no.
  
 ## Tareas
 
