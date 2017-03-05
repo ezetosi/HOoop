@@ -1,5 +1,5 @@
 """
-Define el similador del Radar
+Define el simulador del Radar
 """
 
 
@@ -16,13 +16,12 @@ class Radar(object):
         """
         Detecta si hay un blanco en un medio, en un intervalo de tiempo.
         """
-        #
-        # una_senal = self.generador.generar(tiempo_inicial, tiempo_final)
-        #
-        # una_senal_reflejada = medio.reflejar(una_senal, tiempo_inicial, \
-        # tiempo_final)
-        #
-        # return self.detector.detectar(una_senal_reflejada)
+        
+        una_senal = self.generador.generar(tiempo_inicial, tiempo_final)
+        
+        una_senal_reflejada = medio.reflejar(una_senal, tiempo_inicial, tiempo_final)
+        
+        return self.detector.detectar(una_senal_reflejada, una_senal)
         pass
 
     #TODO agregar el metodo plotear_senal
