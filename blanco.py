@@ -11,16 +11,34 @@ class Blanco(object):
 		pass
 		
     def reflejar(self, senial, tiempo_inicial, tiempo_final):
-        
-        senial_reflejada = [0.]*len(senial)
-        
-        if self.tiempo_inicial > tiempo_inicial and tiempo_final > self.tiempo_inicial:
+		
+		senial_reflejada = [0.]*len(senial)
+		
+		dt = (tiempo_final - tiempo_inicial).seconds / len(senial)
+		
+		si = (self.tiempo_inicial - tiempo_inicial).seconds
+		sf = (self.tiempo_final - tiempo_inicial).seconds
+		
+		if (self.tiempo_inicial >= tiempo_inicial):
+			ni = int(si/dt)
+			if (self.tiempo_final <= tiempo_final):
+				nf = int(sf/dt)
+			else:
+				nf = len(senial)
+		else:
+			ni = 0
+			if (self.tiempo_final >= tiempo_inicial):
+				if (self.tiempo_final <= tiempo_final):
+					nf = int(sf/dt)
+				else:
+					nf = len(senial)
+			else:
+				nf = 0
+		
+		for i in range(ni,nf):
+			senial_reflejada[i] = senial[i] * self.amplitud
             
-            senial_reflejada = [self.amplitud*sen for sen in senial]
-            
-        return senial_reflejada
-        #TODO ver como se encajan los tiempos del blanco y del intervalo de tiempo
-        #(interseccion de invervalos)
-        # despues aplicar los parametros del blanco sobre ese intervalo de tiempo
-        pass
+		return senial_reflejada
+
+		pass
         
