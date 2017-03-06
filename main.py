@@ -4,8 +4,8 @@ import blanco
 from generador import Generador
 import datetime
 import detector
+import blancoCluter
 import numpy as np
-import matplotlib.pyplot as pp
 import scipy as sp
 from scipy.misc import derivative
 
@@ -50,9 +50,18 @@ def main():
 	tiempo_inicial_del_blanco = datetime.datetime(2016, 3, 5, 2) #si cambio el año a 2015 obtengo que no hay blanco detectado
 	tiempo_final_del_blanco = datetime.datetime(2016, 3, 5, 4)
     #TODO contruir un nuevo blanco
+	
 	nuevo_blanco = blanco.Blanco(amplitud_de_frecuencia_del_blanco, 				tiempo_inicial_del_blanco, tiempo_final_del_blanco)
-	mis_blancos=[nuevo_blanco]
-
+	
+	amplitd_de_frecuencia_del_blanco_clutter = amplitud + 5
+	#supongo que el blanco clutter actua durante toda la señal"
+	tiempo_inicial_del_blanco_clutter = tiempo_inicial
+	tiempo_final_del_blanco_clutter = tiempo_final
+	
+	nuevo_blanco_clutter = blancoCluter.Blancocluter (amplitd_de_frecuencia_del_blanco_clutter, tiempo_inicial_del_blanco_clutter, tiempo_final_del_blanco_clutter)
+	
+	mis_blancos=[nuevo_blanco, nuevo_blanco_clutter]
+	
     #TODO contruir un medio
 	mi_medio = medio.Medio(mis_blancos)
 
@@ -61,13 +70,6 @@ def main():
 	resultado = mi_radar.detectar(mi_medio, tiempo_inicial, tiempo_final)
     
 	print resultado
-    ### PARA PLOTEAR FUNCION #####
-	pp.figure()
-	pp.plot(senial_emitida, label = 'senial generada por el radar')
-	pp.plot(resultado, label = 'senial detectada por el radar')
-	pp.legend()
-	pp.show()
-    ##############################
 
 if __name__ == "__main__":
     main()
